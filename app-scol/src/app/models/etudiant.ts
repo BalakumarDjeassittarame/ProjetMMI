@@ -12,4 +12,6 @@ export class Etudiant implements IEtudiant {
   public _genre: string,
   public _age: number,
   public _idCand: number ) {}
+
+
 }

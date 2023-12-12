@@ -1,21 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, OnInit, Input, Injectable } from '@angular/core';
+import { Etudiant } from 'src/app/models/etudiant';
+import { EtudiantServiceService } from 'src/app/services/etudiant-service.service';
 
-import { EtudiantComponent } from './etudiant.component';
+@Component({
+  selector: 'app-etudiant',
+  templateUrl: './etudiant.component.html',
+  styleUrls: ['./etudiant.component.css']
+})
+export class EtudiantComponent implements OnInit {
 
-describe('EtudiantComponent', () => {
-  let component: EtudiantComponent;
-  let fixture: ComponentFixture<EtudiantComponent>;
+  //Utilisation de la communication Binding Parent --> Child
+  @Input() messageChild: string = '';
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [EtudiantComponent]
-    });
-    fixture = TestBed.createComponent(EtudiantComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  //Utilisation de la directive NgFor
+  tabEtudiant?: Etudiant[];
+  etudiant?: Etudiant;
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  constructor(private etudiantService: EtudiantServiceService) {}
+
+  ngOnInit(): void {
+    this.tabEtudiant = this.etudiantService.tabEtudiant;
+  }
+
+}

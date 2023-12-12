@@ -1,21 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input } from '@angular/core';
+import { Specialite } from '../../models/specialite';
+import { SpecServiceService } from '../../services/spec-service.service';
 
-import { SpecialiteComponent } from './specialite.component';
+@Component({
+  selector: 'app-specialite',
+  templateUrl: './specialite.component.html',
+  styleUrls: ['./specialite.component.css']
+})
+export class SpecialiteComponent {
 
-describe('SpecialiteComponent', () => {
-  let component: SpecialiteComponent;
-  let fixture: ComponentFixture<SpecialiteComponent>;
+  @Input() messageChild: string = '';
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [SpecialiteComponent]
-    });
-    fixture = TestBed.createComponent(SpecialiteComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  tabSpecialite?: Specialite[];
+  specialite?: Specialite;
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  constructor(private specService: SpecServiceService) {}
+
+  ngOnInit(): void {
+    this.tabSpecialite = this.specService.tabSpec;
+  }
+
+}

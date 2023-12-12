@@ -7,7 +7,7 @@ import { Specialite } from '../models/specialite';
 })
 
 export class EtudiantServiceService {
-public tabEtud = [ 
+public tabEtudiant = [ 
   new Etudiant("RIVAN","Claude","24 rue de Montreuil", "75020", "Paris", "ahaha@gmail.com", "homme", 20, 11001),
   new Etudiant("Picou","Micha","24 rue de Montreuil", "75020", "Paris", "ahaha@gmail.com", "homme", 20, 11001),
   new Etudiant("Messi","Lionel","24 rue de Montreuil", "75020", "Paris", "ahaha@gmail.com", "GOAT", 20, 11001),
